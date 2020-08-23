@@ -283,20 +283,8 @@ __help__ = """
  - /disconnect: disconnect from a chat
  - /helpconnect: list available commands that can be done remotely 
  - /setflood <number/off>: set the number of messages to take action on a user for flooding
- - /setfloodmode <mute/ban/kick/tban/tmute>: select the valid action eg. /setfloodmode tmute 5m.
+ - /setfloodmode <mute/ban/kick/tban/tmute>: select the valid action eg. /setfloodmode tmute 5m
  - /flood: gets the current antiflood settings
- - /addblacklist <trigger> : blacklists the trigger it will get removed everytime someone types it
- - /unblacklist <trigger> | /rmblacklist <trigger> : stop blacklisting a certain blacklist trigger
- - /blacklist: list all active blacklist filters
- - /addblacklist "the admins suck": This will remove the text everytime someone types it
- - /addblacklist "bit.ly/*": This will remove the link everytime someone sends it matching bit.ly
- - /filter <word> <message>: Every time someone says "word", the bot will reply with "message"
- - /stop <word>: stop that filter.
- - /filters: list all active filters in this chat.
- - /lock <item(s)>: lock the usage of "item" for non-admins
- - /unlock <item(s)>: unlock "item". Everyone can use them again
- - /locks: list the lock status in the chat
- - /locktypes: gets a list of all things that can be locked
 """
 
 __mod_name__ = "Admin 🚫"
