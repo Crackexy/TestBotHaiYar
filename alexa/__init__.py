@@ -59,7 +59,7 @@ if ENV:
     URL = os.environ.get("URL", "")  # Does not contain token
     API_KEY = os.environ.get("API_KEY", None)
     API_HASH = os.environ.get("API_HASH", None)
-    PORT = int(os.environ.get("PORT", 5432))
+    PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
     OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", None)
     DB_URI = os.environ.get("DATABASE_URL")
@@ -72,13 +72,13 @@ if ENV:
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
     OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
-    WORKERS = int(os.environ.get("WORKERS", 4))
+    WORKERS = int(os.environ.get("WORKERS", 8))
     WOLFRAM_ID = os.environ.get("WOLFRAM_ID", None)
     BAN_STICKER = os.environ.get(
         "BAN_STICKER",
         "CAACAgUAAxkBAALtC17p4EIAATVENsrWdMiTEinfiUXp3wACDwADTB0uPDaYvTB8iR7eGgQ",
     )
-    ALLOW_EXCL = os.environ.get("ALLOW_EXCL", True)
+    ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False)
     SUDO_USERS.add(OWNER_ID)
     GBAN_LOGS = os.environ.get("GBAN_LOGS", None)
     LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY", None)
@@ -113,13 +113,6 @@ if ENV:
         "UPSTREAM_REPO_URL", "https://github.com/Ayush1311/RealAlexaBot.git")
     TEMPORARY_DATA = os.environ.get("TEMPORARY_DATA", None)
     SPAMMERS = list(SPAMMERS)
-    try:
-        from alexa.antispam import (antispam_cek_user, antispam_restrict_user,
-                                    detect_user)
-
-        antispam_module = True
-    except ModuleNotFoundError:
-        antispam_module = False
 
     def spamfilters(_text, user_id, _chat_id):
         if int(user_id) in SPAMMERS:
@@ -158,7 +151,6 @@ if ENV:
                 "Your account doesn't have rights to send messages to BOTLOG_CHATID "
                 "group. Check if you typed the Chat ID correctly. Halting!")
             quit(1)
-
     with ubot:
         try:
             ubot.loop.run_until_complete(check_botlog_chatid())
@@ -166,6 +158,7 @@ if ENV:
             LOGS.error("BOTLOG_CHATID environment variable isn't a "
                        "valid entity. Check your config.env file. Halting!")
             quit(1)
+
     INVALID_PH = "\nERROR: The phone no. entered is incorrect"
     try:
         ubot.start()
