@@ -234,17 +234,6 @@ def escape_chars(text: str, to_escape: List[str]) -> str:
         new_text += x
     return new_text
 
-def make_time(time_val):
-    if int(time_val) == 0:
-        return "0"
-    if int(time_val) <= 3600:
-        bantime = str(int(time_val / 60)) + "m"
-    elif int(time_val) >= 3600 and time_val <= 86400:
-        bantime = str(int(time_val / 60 / 60)) + "h"
-    elif int(time_val) >= 86400:
-        bantime = str(int(time_val / 24 / 60 / 60)) + "d"
-    return bantime
-
 
 def extract_time(message, time_val):
     if any(time_val.endswith(unit) for unit in ('m', 'h', 'd')):
